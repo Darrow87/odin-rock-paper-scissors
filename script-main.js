@@ -1,34 +1,55 @@
 function getComputerChoice() {
-    let choices = ['Rock', 'Paper', 'Scissors'];
+    let choices = ['rock', 'paper', 'scissors'];
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
 function playRound(playerChoice, computerChoice) {
+    playerChoice = playerChoice.toLowerCase();
     switch(playerChoice) {
         case 'rock':
             if (computerChoice === 'scissors') {
-                return 'Player wins!';
+                console.log('Player wins!');
             } else if (computerChoice === 'paper') {
-                return 'Computer wins!';
+                console.log('Computer wins!');
+            } else {
+                console.log('It\'s a tie!');
             }
             break;
         case 'paper':
             if (computerChoice === 'rock') {
-                return 'Player wins!';
+                console.log('Player wins!');
             } else if (computerChoice === 'scissors') {
-                return 'Computer wins!';
+                console.log('Computer wins!');
+            } else {
+                console.log('It\'s a tie!');
             }
             break;
         case 'scissors':
             if (computerChoice === 'paper') {
-                return 'Player wins!';
+                console.log('Player wins!');
             } else if (computerChoice === 'rock') {
-                return 'Computer wins!';
+                console.log('Computer wins!');
+            } else {
+                console.log('It\'s a tie!');
             }
             break;
         default:
-            return 'Invalid choice';
+            console.log('Invalid choice');
+            return;
     }
-    return 'It\'s a tie!';
 }
+
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        let playerChoice = prompt("Choose rock, paper, or scissors to play a game!");
+        if (!['rock', 'paper', 'scissors'].includes(playerChoice.toLowerCase())) {
+            console.log("Invalid choice, please choose rock, paper, or scissors.");
+            i--;
+            continue;
+        }
+        playRound(playerChoice, getComputerChoice());
+    }
+}
+
+
 
